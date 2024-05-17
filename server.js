@@ -63,16 +63,16 @@ app.post('/new', async function(req, res) {
     // Try-Catch for any errors
     try {
         // Get the title and content from submitted form
-        const { title, content } = req.body;
+        const { apptdate, update, followup, nextappt } = req.body;
 
         // Reload page if empty title or content
-        if (!title || !content) {
-            console.log("Unable to create new post, no title or content");
+        if (!apptdate || !update || !followup || !nextappt) {
+            console.log("Unable to create new post, missing information");
             res.render('pages/new');
         } else {
             // Create post and store in database
             const blog = await prisma.post.create({
-                data: { title, content },
+                data: { apptdate: new Date(apptdate), update, followup, nextappt: new Date(nextappt) },
             });
 
             // Redirect back to the homepage

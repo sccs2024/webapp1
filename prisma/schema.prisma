@@ -13,9 +13,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Post model represents individual blog posts
+// Post model represents individual update entries
 model Post {
   id        Int       @id @default(autoincrement())
-  title     String
-  content   String
+  apptdate  DateTime  @db.Date
+  update    String
+  followup  String
+  nextappt  DateTime
 }

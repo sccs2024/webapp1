@@ -14,19 +14,20 @@
 
         <!-- Information welcoming visitors to my page -->
         <div class="welcome-container">
-            <h1>Welcome to my blog</h1>
-            <h2>Learn about what happened in my day!</h2>
+            <h1>how's it going today?</h1>
         </div>
 
         <div class="new-post-btn-container">
-           <a href="/new" class="button" role="button">+ New Post</a>
+           <a href="/new" class="button" role="button">Today's update</a>
         </div>
 
         <!-- Show blog posts -->
         <% blogs.forEach(post => { %>
             <article class="post-container">
-                <h3><%= post.title %></h3>
-                <p><%= post.content %></p>
+                <h3><%= post.apptdate%></h3>
+                <p><%= post.update%></p>
+                <p><%= post.followup%></p>
+                <p><%= post.nextappt %></p>
                 <form action="/delete/<%= post.id %>" method="post" onsubmit="return confirm('Do you really want to delete this post?');">
                     <button class="outline primary" type="submit">Delete</button>
                 </form>

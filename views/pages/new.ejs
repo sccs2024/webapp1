@@ -14,8 +14,7 @@
 
         <!-- Create a new post headline -->
         <div class="welcome-container">
-            <h1>Create a new post</h1>
-            <h2>Write whatever comes to mind!</h2>
+            <h1>Today's update</h1>
         </div>
 
         <!-- Form to submit a new post -->
@@ -23,16 +22,28 @@
             <form method="post">
                 <fieldset>
                   <label>
-                    Title
-                    <input name="title" placeholder="Write the name of this post..."/>
+                    Appointment date
+                    <!-- <input type="apptdate" placeholder="Today's date"/> -->
+                    <input type="date" name="apptdate" class="datestyle" required>
                   </label>
                 </fieldset>
 
-                <label>
-                Content
-                <textarea name="content" placeholder="Write what's on your mind..." ></textarea>
-                </label>
+                  <label>
+                    Update
+                    <textarea name="update" placeholder="What did the doctor say?" ></textarea>
+                  </label>
               
+                  <label>
+                    Followup
+                    <textarea name="followup" placeholder="What to do next?" ></textarea>
+                  </label>
+
+                  <label>
+                    Next appointment date
+                    <input type="date" name="nextappt" class="datestyle" required>
+                  </label>
+              
+
                 <input
                   type="submit"
                   value="🚀 Create post"
