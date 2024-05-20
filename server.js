@@ -36,12 +36,10 @@ app.get('/', async function(req, res) {
         // Render the homepage with all the blog posts
         await res.render('pages/home', { blogs: blogs });
       } catch (error) {
-        res.render('pages/home');
+        res.render('pages/demo');
         console.log(error);
       } 
 });
-
-
 
 // About page
 app.get('/about', function(req, res) {
@@ -105,4 +103,4 @@ app.post("/delete/:id", async (req, res) => {
   });
 
 // Tells the app which port to run on
-app.listen(8080);
+app.listen(3002);
