@@ -25,9 +25,10 @@
         <% blogs.forEach(post => { %>
             <article class="post-container">
                 <h3><%= post.apptdate%></h3>
+                <p><%= post.doctortype%></p>
                 <p><%= post.update%></p>
                 <p><%= post.followup%></p>
-                <p><%= post.nextappt %></p>
+                <p><%= post.nextappt%></p>
                 <form action="/delete/<%= post.id %>" method="post" onsubmit="return confirm('Do you really want to delete this post?');">
                     <button class="outline primary" type="submit">Delete</button>
                 </form>

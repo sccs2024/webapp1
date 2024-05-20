@@ -41,6 +41,8 @@ app.get('/', async function(req, res) {
       } 
 });
 
+
+
 // About page
 app.get('/about', function(req, res) {
     res.render('pages/about');
@@ -63,16 +65,16 @@ app.post('/new', async function(req, res) {
     // Try-Catch for any errors
     try {
         // Get the title and content from submitted form
-        const { apptdate, update, followup, nextappt } = req.body;
+        const { apptdate, doctortype, update, followup, nextappt } = req.body;
 
         // Reload page if empty title or content
-        if (!apptdate || !update || !followup || !nextappt) {
+        if (!apptdate || !doctortype || !update || !followup || !nextappt) {
             console.log("Unable to create new post, missing information");
             res.render('pages/new');
         } else {
             // Create post and store in database
             const blog = await prisma.post.create({
-                data: { apptdate: new Date(apptdate), update, followup, nextappt: new Date(nextappt) },
+                data: { apptdate: new Date(apptdate), doctortype, update, followup, nextappt: new Date(nextappt) },
             });
 
             // Redirect back to the homepage

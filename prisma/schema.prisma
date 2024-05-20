@@ -15,9 +15,10 @@ datasource db {
 
 // Post model represents individual update entries
 model Post {
-  id        Int       @id @default(autoincrement())
-  apptdate  DateTime  @db.Date
-  update    String
-  followup  String
-  nextappt  DateTime
+  id          Int       @id @default(autoincrement())
+  apptdate    DateTime  @db.Date
+  doctortype  String
+  update      String
+  followup    String
+  nextappt    DateTime
 }
