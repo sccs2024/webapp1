@@ -20,6 +20,19 @@
         <div class="new-post-btn-container">
            <a href="/new" class="button" role="button">Today's update</a>
         </div>
+        
+        <!-- Filter posts by doctor type -->
+        <form action="/" method="get" class="filter-form">
+            <label for="doctortype">Filter by Doctor Type:</label>
+            <select name="doctortype" id="doctortype">
+                <option value="">All</option>
+                <option value="Cardiologist">Cardiologist</option>
+                <option value="Dermatologist">Dermatologist</option>
+                <option value="Pediatrician">Pediatrician</option>
+                <!-- Add other doctor types as needed -->
+            </select>
+            <button type="submit" class="button primary">Filter</button>
+        </form>
 
         <!-- Show blog posts -->
         <% blogs.forEach(post => { %>

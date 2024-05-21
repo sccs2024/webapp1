@@ -19,6 +19,14 @@ app.use(express.urlencoded({extended: true}));
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient();
 
+//Personal info for the about page
+const personInfo = {
+  name: "John Doe",
+  address: "123 Main St, City, Country",
+  phoneNumber: "123-456-7890",
+  bloodType: "AB"
+};
+
 // Main landing page
 app.get('/', async function(req, res) {
 
@@ -43,8 +51,8 @@ app.get('/', async function(req, res) {
 
 // About page
 app.get('/about', function(req, res) {
-    res.render('pages/about');
-});
+    res.render('pages/about', { personInfo: personInfo });
+  });
 
 // New post page
 app.get('/new', function(req, res) {
