@@ -1,6 +1,13 @@
+
+
+.button {
+    background-color: #2F405C; /* Desired background color */
+    color: white; /* Text color */
+}
+
 .welcome-container {
     text-align: center;
-
+    
     margin-top: 50px;
     margin-bottom: 50px;
 }
@@ -30,6 +37,13 @@
 
 .about-container > img{
     margin-bottom: 40px;
+}
+
+.location-container {
+    text-align: center;
+
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .cancel-create-post {

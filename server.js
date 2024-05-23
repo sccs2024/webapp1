@@ -24,7 +24,8 @@ const personInfo = {
   name: "John Doe",
   address: "123 Main St, City, Country",
   phoneNumber: "123-456-7890",
-  bloodType: "AB"
+  bloodType: "AB",
+  allergies: "NIL"
 };
 
 // Main landing page
@@ -60,8 +61,8 @@ app.get('/new', function(req, res) {
 });
 
 // New demo page
-app.get('/demo', function(req, res) {
-  res.render('pages/demo');
+app.get('/locations', function(req, res) {
+  res.render('pages/locations');
 });
 
 
