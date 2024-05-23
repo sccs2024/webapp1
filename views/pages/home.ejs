@@ -20,30 +20,38 @@
         <div class="new-post-btn-container">
            <a href="/new" class="button" role="button">today's update</a>
         </div>
-        
-        <!--<div class="filter-buttons">
+
+        <hr>
+
+        <div class="welcome-container">
+            <h1>past updates</h1>
+        </div>
+
+        <div class="filter-buttons">
             <a href="/"><button>All</button></a>
             <a href="/?doctortype=GP"><button>GP</button></a>
             <a href="/?doctortype=ENT"><button>ENT</button></a>
             <a href="/?doctortype=Cardiovascular"><button>Cardiovascular</button></a>
-        </div>-->
+        </div>
 
-       <div class="filter-buttons">
+       <!-- <div class="filter-buttons">
             <% let uniqueDoctorTypes = [...new Set(blogs.map(post => post.doctortype))]; %>
             <% uniqueDoctorTypes.forEach(type => { %>
                 <a href="/?doctortype=<%= type %>"><button><%= type %></button></a>
             <% }); %>
             <a href="/"><button>All</button></a>
-        </div> 
+        </div> -->
 
         <!-- Show blog posts -->
         <% blogs.forEach(post => { %>
             <article class="post-container">
-                <h3><%= post.apptdate%></h3>
-                <p><%= post.doctortype%></p>
-                <p><%= post.update%></p>
-                <p><%= post.followup%></p>
-                <p><%= post.nextappt%></p>
+                <% const apptdateFormat = new Date(post.apptdate); %>
+                <h3><%= apptdateFormat.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) %></h3>
+                <!-- <h3><%= post.apptdate%></h3> -->
+                <p>Doctor: <%= post.doctortype%></p>
+                <p>Notes: <%= post.update%></p>
+                <p>Next steps: <%= post.followup%></p>
+                <p>Next appt date: <%= post.nextappt%></p>
                 <form action="/delete/<%= post.id %>" method="post" onsubmit="return confirm('Do you really want to delete this post?');">
                     <button class="outline primary" type="submit">Delete</button>
                 </form>
@@ -52,5 +60,6 @@
 
         <p>Disclaimer: This website is created for learning purposes only. The information provided here should not be considered professional advice. Please note that we make no guarantees regarding the accuracy, completeness, or reliability of the contents of this website. Any actions you take based on the contents of this website are at your own risk. We are not liable for any losses or damages incurred from the use of this website.</p>
     </main>
+
 </body>
 </html>

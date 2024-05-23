@@ -31,19 +31,35 @@ const personInfo = {
 // Main landing page
 app.get('/', async function(req, res) {
 
+  try {
+  const blogs = await prisma.post.findMany({
+              orderBy: [
+                {
+                  id: 'desc'
+                }
+              ]
+  
+            });
+  let filters = req.query;
+    let filteredPosts = blogs;
+
+    if (filters.doctortype) {
+      filteredPosts = filteredPosts.filter(post => post.doctortype === filters.doctortype);
+    }
     // Try-Catch for any errors
-    try {
-        // Get all blog posts
-        const blogs = await prisma.post.findMany({
-                orderBy: [
-                  {
-                    id: 'desc'
-                  }
-                ]
-        });
+    
+    //try {
+    //    // Get all blog posts
+    //    const blogs = await prisma.post.findMany({
+    //            orderBy: [
+    //              {
+    //                id: 'desc'
+    //              }
+    //            ]
+    //    });
 
         // Render the homepage with all the blog posts
-        await res.render('pages/home', { blogs: blogs }); 
+        await res.render('pages/home', { blogs: filteredPosts }); 
       } catch (error) {
         res.render('pages/demo');
         console.log(error);
