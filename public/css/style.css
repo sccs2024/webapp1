@@ -5,6 +5,11 @@
     color: white; /* Text color */
 }
 
+.filter-buttons {
+    background-color: #2F405C; /* Desired background color */
+    color: white; /* Text color */
+}
+
 .welcome-container {
     text-align: center;
     

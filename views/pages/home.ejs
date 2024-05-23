@@ -21,18 +21,20 @@
            <a href="/new" class="button" role="button">today's update</a>
         </div>
         
-        <!-- Filter posts by doctor type -->
-        <form action="/" method="get" class="filter-form">
-            <label for="doctortype">Filter by Doctor Type:</label>
-            <select name="doctortype" id="doctortype">
-                <option value="">All</option>
-                <option value="Cardiologist">Cardiologist</option>
-                <option value="Dermatologist">Dermatologist</option>
-                <option value="Pediatrician">Pediatrician</option>
-                <!-- Add other doctor types as needed -->
-            </select>
-            <button type="submit" class="button primary">Filter</button>
-        </form>
+        <!--<div class="filter-buttons">
+            <a href="/"><button>All</button></a>
+            <a href="/?doctortype=GP"><button>GP</button></a>
+            <a href="/?doctortype=ENT"><button>ENT</button></a>
+            <a href="/?doctortype=Cardiovascular"><button>Cardiovascular</button></a>
+        </div>-->
+
+       <div class="filter-buttons">
+            <% let uniqueDoctorTypes = [...new Set(blogs.map(post => post.doctortype))]; %>
+            <% uniqueDoctorTypes.forEach(type => { %>
+                <a href="/?doctortype=<%= type %>"><button><%= type %></button></a>
+            <% }); %>
+            <a href="/"><button>All</button></a>
+        </div> 
 
         <!-- Show blog posts -->
         <% blogs.forEach(post => { %>
