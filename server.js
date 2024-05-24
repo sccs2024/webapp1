@@ -28,8 +28,13 @@ const personInfo = {
   allergies: "NIL"
 };
 
-// Main landing page
-app.get('/', async function(req, res) {
+// New post page
+app.get('/', function(req, res) {
+  res.render('pages/home');
+});
+
+// Main landing page after login
+app.get('/landing1', async function(req, res) {
 
   try {
   const blogs = await prisma.post.findMany({
@@ -59,9 +64,9 @@ app.get('/', async function(req, res) {
     //    });
 
         // Render the homepage with all the blog posts
-        await res.render('pages/home', { blogs: filteredPosts }); 
+        await res.render('pages/landing1', { blogs: filteredPosts }); 
       } catch (error) {
-        res.render('pages/demo');
+        res.render('pages/locations');
         console.log(error);
       } 
 });
@@ -101,7 +106,7 @@ app.post('/new', async function(req, res) {
             });
 
             // Redirect back to the homepage
-            res.redirect('/');
+            res.redirect('/landing1');
         }
       } catch (error) {
         console.log(error);
@@ -120,10 +125,10 @@ app.post("/delete/:id", async (req, res) => {
         });
       
         // Redirect back to the homepage
-        res.redirect('/');
+        res.redirect('/landing1');
     } catch (error) {
         console.log(error);
-        res.redirect('/');
+        res.redirect('/landing1');
     }
   });
 

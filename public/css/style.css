@@ -5,9 +5,26 @@
     color: white; /* Text color */
 }
 
-.filter-buttons {
-    background-color: #2F405C; /* Desired background color */
+.newbutton {
+    background-color: #F29F05; /* Desired background color */
+    border: none;
     color: white; /* Text color */
+}
+
+.newbutton:hover {
+    background-color: hsl(349, 96%, 48%); /* Change colour on hover */
+}
+
+.filter-buttons button {
+    background-color: #F2B807; /* Desired button color */
+    border: none;
+    color: white; /* Text color */
+    padding: 5px;
+    font-size: 13px;
+}
+
+.filter-buttons button:hover {
+    background-color: #D96248; /* Change colour on hover */
 }
 
 .welcome-container {

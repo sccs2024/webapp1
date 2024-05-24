@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link rel="stylesheet" href="/css/style.css" >
+</head>
+<body>
+    <main class="container">
+        <!-- Navbar which can be reused across other pages -->
+        <%- include('../partials/navbar'); %>
+
+        <!-- Information welcoming visitors to my page -->
+        <div class="welcome-container">
+            <h1>how's it going today?</h1>
+        </div>
+
+        <div class="new-post-btn-container">
+           <a href="/new" class="newbutton" role="button">today's update</a>
+        </div>
+
+        <hr>
+
+        <div class="welcome-container">
+            <h1>past updates</h1>
+        </div>
+
+        <div class="filter-buttons">
+            <a href="/landing1"><button>All</button></a>
+            <a href="/landing1?doctortype=GP"><button>GP</button></a>
+            <a href="/landing1?doctortype=ENT"><button>ENT</button></a>
+            <a href="/landing1?doctortype=Cardiovascular"><button>Cardiovascular</button></a>
+        </div>
+
+       <!-- <div class="filter-buttons">
+            <% let uniqueDoctorTypes = [...new Set(blogs.map(post => post.doctortype))]; %>
+            <% uniqueDoctorTypes.forEach(type => { %>
+                <a href="/?doctortype=<%= type %>"><button><%= type %></button></a>
+            <% }); %>
+            <a href="/"><button>All</button></a>
+        </div> -->
+
+        <!-- Show blog posts -->
+        <% blogs.forEach(post => { %>
+            <article class="post-container">
+                <% const apptdateFormat = new Date(post.apptdate); %>
+                <h3><%= apptdateFormat.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) %></h3>
+                <!-- <h3><%= post.apptdate%></h3> -->
+                <p>Doctor: <%= post.doctortype%></p>
+                <p>Notes: <%= post.update%></p>
+                <p>Next steps: <%= post.followup%></p>
+                <p>Next appt date: <%= post.nextappt%></p>
+                <form action="/delete/<%= post.id %>" method="post" onsubmit="return confirm('Do you really want to delete this post?');">
+                    <button class="outline primary" type="submit">Delete</button>
+                </form>
+            </article>
+        <% }); %>
+
+        <hr>
+        <p style="font-size: 10px">Disclaimer: This website is created for learning purposes only. The information provided here should not be considered professional advice. Please note that we make no guarantees regarding the accuracy, completeness, or reliability of the contents of this website. Any actions you take based on the contents of this website are at your own risk. We are not liable for any losses or damages incurred from the use of this website.</p>
+    </main>
+
+</body>
+</html>
