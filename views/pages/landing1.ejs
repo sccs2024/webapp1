@@ -6,6 +6,16 @@
     <title>Home</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
     <link rel="stylesheet" href="/css/style.css" >
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCDB17KNYS"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XCDB17KNYS');
+    </script>
 </head>
 <body>
     <main class="container">
@@ -48,10 +58,14 @@
                 <% const apptdateFormat = new Date(post.apptdate); %>
                 <h3><%= apptdateFormat.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) %></h3>
                 <!-- <h3><%= post.apptdate%></h3> -->
+
                 <p>Doctor: <%= post.doctortype%></p>
+
                 <p>Notes: <%= post.update%></p>
+
                 <p>Next steps: <%= post.followup%></p>
-                <p>Next appt date: <%= post.nextappt%></p>
+
+                <p>Next appt date: <%= post.nextappt%> </p>
                 <form action="/delete/<%= post.id %>" method="post" onsubmit="return confirm('Do you really want to delete this post?');">
                     <button class="outline primary" type="submit">Delete</button>
                 </form>
